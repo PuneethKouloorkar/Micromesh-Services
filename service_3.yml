@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-3
+  labels:
+    app: service-3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-3
+  template:
+    metadata:
+      labels:
+        app: service-3
+    spec:
+      containers:
+        - name: service-3
+          image: pwd_validity_checker
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5002
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-3
+spec:
+  ports:
+  - name: http 
+    port: 5002
+    protocol: TCP
+    targetPort: 5002
+  selector:
+    app: service-3
+  type: ClusterIP

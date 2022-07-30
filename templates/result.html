@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', 
+    filename='stylesheet.css') }}">
+</head>
+<body>
+    {% for response in responses %}
+        <strong> {{ response }} </strong> <br>  
+    {% endfor %}
+</body>
+</html>

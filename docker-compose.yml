@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  # Service 1
+  master_service:
+    build: .
+    image: master_service
+    environment:
+      - from_service=docker
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./utils.py:/app/utils.py
+      - ./Master_service.py:/app/Master_service.py
+      - ./static:/app/static
+      - ./templates:/app/templates
+    command: ["Master_service.py"]
+
+
+  # Service 2
+  common_pwd_checker:
+    build: .
+    image: common_pwd_checker
+    ports:
+      - '5001:5001'
+    volumes:
+      - ./utils.py:/app/utils.py
+      - ./Common_password_checker.py:/app/Common_password_checker.py
+      - ./static:/app/static
+    command: ["Common_password_checker.py"]
+
+
+  # Service 3
+  pwd_validity_checker:
+    build: .
+    image: pwd_validity_checker
+    ports:
+      - '5002:5002'
+    volumes:
+      - ./utils.py:/app/utils.py
+      - ./Password_validity_checker.py:/app/Password_validity_checker.py
+      - ./static:/app/static
+    command: ["Password_validity_checker.py"]
+
+
+  # Service 4
+  pwd_strength_checker:
+    build: .
+    image: pwd_strength_checker
+    ports:
+      - '5003:5003'
+    volumes:
+      - ./utils.py:/app/utils.py
+      - ./Password_strength_checker.py:/app/Password_strength_checker.py
+      - ./static:/app/static
+    command: ["Password_strength_checker.py"] 

@@ -1,0 +1,18 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY ./utils.py /app/utils.py
+COPY ./Master_service.py /app/Master_service.py
+COPY ./static /app/static
+COPY ./templates /app/templates
+
+RUN pip install flask requests
+
+EXPOSE 5000
+
+ENV from_service=k8s
+
+ENTRYPOINT ["python"]
+
+CMD ["Master_service.py"]

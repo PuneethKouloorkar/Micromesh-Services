@@ -49,6 +49,7 @@ For Unix: ```eval $(minikube docker-env)```
 ## Requirements 
 Python 3 \
 flask \
+Docker \
 minikube \
 kubectl \
 requests

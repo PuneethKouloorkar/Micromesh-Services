@@ -1,6 +1,6 @@
 # Microservices-Mesh
 
-## Microservice mesh deployment using Flask, Docker, and Kubernetes
+## Microservices mesh deployment using Flask, Docker, and Kubernetes
 
 1. The task is to build a microservice mesh attached to test the entered password with various checks.
 2. Service 1 (master service): The first services displays a simple registration form web interface to collect username, email and password. The password is collected and sent to all the other microservices and the responses are displayed in another HTML page.  
